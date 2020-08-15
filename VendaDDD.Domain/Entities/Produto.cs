@@ -29,5 +29,13 @@ namespace VendaDDD.Domain.Entities
 
             Desconto = desconto;
         }
+
+        public void AdicionarQuantidade(int quantidade)
+        {
+            if (quantidade == 0)
+                throw new ArgumentException("Quantidade não pode ser Zero");
+
+            QuantidadeEmMaos += quantidade;
+        }
     }
 }
