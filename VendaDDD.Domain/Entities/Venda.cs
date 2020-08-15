@@ -14,9 +14,9 @@ namespace VendaDDD.Domain.Entities
         public Vendedor Vendedor { get; private set; }
         public IReadOnlyList<Produto> Produtos => _Produtos.AsReadOnly();
         public decimal? DescontoNaVenda { get; private set; }
-        public decimal ValorTotalDescontos => (DescontoNaVenda.GetValueOrDefault() + _Produtos.Sum(x => x.Desconto.GetValueOrDefault()));
-        public decimal ValorTotalBruto => _Produtos.Sum(x => x.Preco);
-        public decimal ValorTotalLiquido => (ValorTotalBruto - ValorTotalDescontos);
+        public decimal ValorTotalDescontos => DescontoNaVenda.GetValueOrDefault() + _Produtos.Sum(x => x.Desconto.GetValueOrDefault());
+        public decimal ValorTotalBruto => _Produtos.Sum(x => x.ValorBruto);
+        public decimal ValorTotalLiquido => ValorTotalBruto - ValorTotalDescontos;
 
         public Venda()
         {
