@@ -12,7 +12,7 @@ namespace VendaDDD.Tests.Entities
         [InlineData("Meia", 25.5, 1, 30)]
         [InlineData("Meia", 25.5, 2, 51.01)]
         [InlineData("Sapato Nike", 45.87, 4, 184.49)]
-        public void DescontoNaoPodeSerMaiorQueValorBruto(string nomeProduto, decimal valorProduto, int quantidadeEmMaos, decimal valorDesconto)
+        public void LancarExcecao_DescontoMaiorQueValorBruto(string nomeProduto, decimal valorProduto, int quantidadeEmMaos, decimal valorDesconto)
         {
             Produto meia = new Produto(nomeProduto, valorProduto, quantidadeEmMaos);
             Assert.Throws<ArgumentException>(() => meia.DarDesconto(valorDesconto));
@@ -22,7 +22,7 @@ namespace VendaDDD.Tests.Entities
         [InlineData("Meia", 25.5, 1, 12)]
         [InlineData("Meia", 25.5, 1, 25.5)]
         [InlineData("Bota Nihili", 104.14, 2, 47.28)]
-        public void DescontoMenorQueValorBruto(string nomeProduto, decimal valorProduto, int quantidadeEmMaos, decimal valorDesconto)
+        public void NaoLancarExcecao_DescontoMenorQueValorBruto(string nomeProduto, decimal valorProduto, int quantidadeEmMaos, decimal valorDesconto)
         {
             Produto meia = new Produto(nomeProduto, valorProduto, quantidadeEmMaos);
             meia.DarDesconto(valorDesconto);
