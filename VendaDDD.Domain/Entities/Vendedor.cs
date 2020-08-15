@@ -8,5 +8,11 @@ namespace VendaDDD.Domain.Entities
     {
         public Guid Id { get; private set; }
         public string NomeCompleto { get; private set; }
+
+        public Vendedor(string nomeCompleto, Guid? id = null)
+        {
+            Id = id ?? Guid.NewGuid();
+            NomeCompleto = nomeCompleto;
+        }
     }
 }
