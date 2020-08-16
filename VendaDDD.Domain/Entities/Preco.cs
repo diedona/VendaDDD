@@ -23,5 +23,10 @@ namespace VendaDDD.Domain.Entities
             PrecoVista = precoVista;
             PrecoPrazo = precoPrazo;
         }
+
+        public void DefinirProduto(Produto produto)
+        {
+            Produto = produto;
+        }
     }
 }

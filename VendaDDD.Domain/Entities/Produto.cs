@@ -19,6 +19,8 @@ namespace VendaDDD.Domain.Entities
             Descricao = descricao;
             Preco = preco;
             QuantidadeEmMaos = quantidadeEmMaos;
+
+            Preco.DefinirProduto(this);
         }
 
         public void DarDesconto(decimal desconto)
