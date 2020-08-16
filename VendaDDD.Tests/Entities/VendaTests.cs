@@ -18,7 +18,7 @@ namespace VendaDDD.Tests.Entities
         {
             Vendedor vendedor = new Vendedor("Vendedor Teste", nivel);
             Venda venda = new Venda();
-            Produto produto = new Produto(nomeProduto, preco, quantidade);
+            Produto produto = new Produto(nomeProduto, new Preco(preco), quantidade);
             venda.AdicionarProduto(produto);
             venda.SelecionarVendedor(vendedor);
 
@@ -34,7 +34,7 @@ namespace VendaDDD.Tests.Entities
         {
             Vendedor vendedor = new Vendedor("Vendedor Teste", nivel);
             Venda venda = new Venda();
-            Produto produto = new Produto(nomeProduto, preco, quantidade);
+            Produto produto = new Produto(nomeProduto, new Preco(preco), quantidade);
             venda.AdicionarProduto(produto);
             venda.SelecionarVendedor(vendedor);
 

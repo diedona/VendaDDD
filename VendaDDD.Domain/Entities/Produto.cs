@@ -8,13 +8,13 @@ namespace VendaDDD.Domain.Entities
     public class Produto : Entity
     {
         public string Descricao { get; private set; }
-        public decimal Preco { get; private set; }
+        public Preco Preco { get; private set; }
         public decimal? Desconto { get; private set; }
         public int QuantidadeEmMaos { get; private set; }
-        public decimal ValorBruto => Preco * QuantidadeEmMaos;
+        public decimal ValorBruto => Preco.PrecoVenda * QuantidadeEmMaos;
         public decimal ValorLiquido => ValorBruto - Desconto.GetValueOrDefault();
 
-        public Produto(string descricao, decimal preco, int quantidadeEmMaos, Guid? id = null) : base(id)
+        public Produto(string descricao, Preco preco, int quantidadeEmMaos, Guid? id = null) : base(id)
         {
             Descricao = descricao;
             Preco = preco;
