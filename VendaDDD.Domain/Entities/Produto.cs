@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VendaDDD.Domain.Enums;
 using VendaDDD.Shared.Entities;
 
 namespace VendaDDD.Domain.Entities
@@ -12,7 +13,8 @@ namespace VendaDDD.Domain.Entities
         public decimal? Desconto { get; private set; }
         public int QuantidadeEmMaos { get; private set; }
         public Venda Venda { get; private set; }
-        public decimal ValorBruto => Preco.PrecoVenda * QuantidadeEmMaos;
+        public decimal ValorBruto => PegarPrecoPeloPlano() * QuantidadeEmMaos;
+
         public decimal ValorLiquido => ValorBruto - Desconto.GetValueOrDefault();
 
         public Produto(string descricao, Preco preco, int quantidadeEmMaos, Guid? id = null) : base(id)
@@ -43,6 +45,25 @@ namespace VendaDDD.Domain.Entities
         public void DefinirVenda(Venda venda)
         {
             Venda = venda;
+        }
+
+        private decimal PegarPrecoPeloPlano()
+        {
+            if (Venda == null)
+                throw new Exception("Não há uma venda para este produto");
+
+            if (Venda.PlanoPagamento == null)
+                throw new Exception("Não há um plano de pagamento para a venda");
+
+            switch (Venda.PlanoPagamento.FormaPagamento)
+            {
+                case FormaPagamento.Vista:
+                    return Preco.PrecoVista ?? Preco.PrecoVenda;
+                case FormaPagamento.Prazo:
+                    return Preco.PrecoPrazo ?? Preco.PrecoVenda;
+                default:
+                    throw new Exception("Forma de pagamento desconhecida");
+            }
         }
     }
 }
