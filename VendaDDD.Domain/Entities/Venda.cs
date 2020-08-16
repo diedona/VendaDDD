@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using VendaDDD.Shared.Entities;
 
 namespace VendaDDD.Domain.Entities
 {
-    public class Venda
+    public class Venda : Entity
     {
         private readonly List<Produto> _Produtos;
 
-        public Guid Id { get; private set; }
         public Cliente Cliente { get; private set; }
         public Vendedor Vendedor { get; private set; }
         public IReadOnlyList<Produto> Produtos => _Produtos.AsReadOnly();
@@ -18,7 +18,7 @@ namespace VendaDDD.Domain.Entities
         public decimal ValorTotalBruto => _Produtos.Sum(x => x.ValorBruto);
         public decimal ValorTotalLiquido => ValorTotalBruto - ValorTotalDescontos;
 
-        public Venda()
+        public Venda(Guid? id = null) : base(id)
         {
             _Produtos = new List<Produto>();
         }

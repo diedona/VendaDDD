@@ -2,18 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 using VendaDDD.Domain.Enums;
+using VendaDDD.Shared.Entities;
 
 namespace VendaDDD.Domain.Entities
 {
-    public class Vendedor
+    public class Vendedor : Entity
     {
-        public Guid Id { get; private set; }
         public string NomeCompleto { get; private set; }
         public NivelVendedor Nivel { get; private set; }
 
-        public Vendedor(string nomeCompleto, NivelVendedor nivel, Guid? id = null)
+        public Vendedor(string nomeCompleto, NivelVendedor nivel, Guid? id = null) : base(id)
         {
-            Id = id ?? Guid.NewGuid();
             NomeCompleto = nomeCompleto;
             Nivel = nivel;
         }

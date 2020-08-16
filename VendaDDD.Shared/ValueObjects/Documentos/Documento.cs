@@ -4,7 +4,7 @@ using System.Text;
 
 namespace VendaDDD.Shared.ValueObjects.Documentos
 {
-    public abstract class Documento
+    public abstract class Documento : ValueObject
     {
         public string Numero { get; private set; }
         public DateTime? DataExpiracao { get; private set; }

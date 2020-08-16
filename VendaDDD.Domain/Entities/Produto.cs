@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using VendaDDD.Shared.Entities;
 
 namespace VendaDDD.Domain.Entities
 {
-    public class Produto
+    public class Produto : Entity
     {
-        public Guid Id { get; private set; }
         public string Descricao { get; private set; }
         public decimal Preco { get; private set; }
         public decimal? Desconto { get; private set; }
@@ -14,9 +14,8 @@ namespace VendaDDD.Domain.Entities
         public decimal ValorBruto => Preco * QuantidadeEmMaos;
         public decimal ValorLiquido => ValorBruto - Desconto.GetValueOrDefault();
 
-        public Produto(string descricao, decimal preco, int quantidadeEmMaos, Guid? id = null)
+        public Produto(string descricao, decimal preco, int quantidadeEmMaos, Guid? id = null) : base(id)
         {
-            Id = id ?? Guid.NewGuid();
             Descricao = descricao;
             Preco = preco;
             QuantidadeEmMaos = quantidadeEmMaos;

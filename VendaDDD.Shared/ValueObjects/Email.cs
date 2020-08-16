@@ -4,7 +4,7 @@ using System.Text;
 
 namespace VendaDDD.Shared.ValueObjects
 {
-    public class Email
+    public class Email : ValueObject
     {
         public string Endereco { get; private set; }
 
