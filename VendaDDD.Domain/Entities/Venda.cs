@@ -40,7 +40,7 @@ namespace VendaDDD.Domain.Entities
 
             var produtoJaExistente = _Produtos.FirstOrDefault(x => x.Id == produto.Id);
             if (produtoJaExistente == null)
-                _Produtos.Add(produtoJaExistente);
+                _Produtos.Add(produto);
             else
                 produtoJaExistente.AdicionarQuantidade(produto.QuantidadeEmMaos);
         }
@@ -54,12 +54,11 @@ namespace VendaDDD.Domain.Entities
             if (produto == null)
                 throw new ArgumentException($"{idProduto} não é um produto desta venda");
 
-            decimal valorProduto = produto.ValorBruto;
-            decimal porcentagemDescontoProduto = ((desconto * 100.0m) / valorProduto);
+            decimal porcentagemDescontoProduto = ((desconto * 100.0m) / produto.ValorBruto);
             decimal limiteDescontoPorcentagemVendedor = Vendedor.PegarLimiteDescontoPorcentagem();
 
             if (porcentagemDescontoProduto > limiteDescontoPorcentagemVendedor)
-                throw new ArgumentException($"Vendedor selecionado não pode dar desconto de {porcentagemDescontoProduto}, limite de {limiteDescontoPorcentagemVendedor}");
+                throw new ArgumentException($"Vendedor selecionado não pode dar desconto de {porcentagemDescontoProduto}%, limite de {limiteDescontoPorcentagemVendedor}%");
 
             produto.DarDesconto(desconto);
         }
