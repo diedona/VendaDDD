@@ -14,7 +14,6 @@ namespace VendaDDD.Domain.Entities
         public int QuantidadeEmMaos { get; private set; }
         public Venda Venda { get; private set; }
         public decimal ValorBruto => PegarPrecoPeloPlano() * QuantidadeEmMaos;
-
         public decimal ValorLiquido => ValorBruto - Desconto.GetValueOrDefault();
 
         public Produto(string descricao, Preco preco, int quantidadeEmMaos, Guid? id = null) : base(id)
@@ -47,13 +46,10 @@ namespace VendaDDD.Domain.Entities
             Venda = venda;
         }
 
-        private decimal PegarPrecoPeloPlano()
+        public decimal PegarPrecoPeloPlano()
         {
-            if (Venda == null)
-                throw new Exception("Não há uma venda para este produto");
-
-            if (Venda.PlanoPagamento == null)
-                throw new Exception("Não há um plano de pagamento para a venda");
+            if (Venda == null || Venda.PlanoPagamento == null)
+                return Preco.PrecoVenda;
 
             switch (Venda.PlanoPagamento.FormaPagamento)
             {
