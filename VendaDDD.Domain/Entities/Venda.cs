@@ -12,6 +12,7 @@ namespace VendaDDD.Domain.Entities
 
         public Cliente Cliente { get; private set; }
         public Vendedor Vendedor { get; private set; }
+        public PlanoPagamento PlanoPagamento { get; private set; }
         public IReadOnlyList<Produto> Produtos => _Produtos.AsReadOnly();
         public decimal? DescontoNaVenda { get; private set; }
         public decimal ValorTotalDescontos => DescontoNaVenda.GetValueOrDefault() + _Produtos.Sum(x => x.Desconto.GetValueOrDefault());
@@ -23,14 +24,19 @@ namespace VendaDDD.Domain.Entities
             _Produtos = new List<Produto>();
         }
 
-        public void SelecionarCliente(Cliente cliente)
+        public void DefinirCliente(Cliente cliente)
         {
             Cliente = cliente;
         }
 
-        public void SelecionarVendedor(Vendedor vendedor)
+        public void DefinirVendedor(Vendedor vendedor)
         {
             Vendedor = vendedor;
+        }
+
+        public void DefinirPlanoPagamento(PlanoPagamento planoPagamento)
+        {
+            PlanoPagamento = planoPagamento;
         }
 
         public void AdicionarProduto(Produto produto)
@@ -40,7 +46,10 @@ namespace VendaDDD.Domain.Entities
 
             var produtoJaExistente = _Produtos.FirstOrDefault(x => x.Id == produto.Id);
             if (produtoJaExistente == null)
+            {
+                produto.DefinirVenda(this);
                 _Produtos.Add(produto);
+            }
             else
                 produtoJaExistente.AdicionarQuantidade(produto.QuantidadeEmMaos);
         }

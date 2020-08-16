@@ -20,7 +20,7 @@ namespace VendaDDD.Tests.Entities
             Venda venda = new Venda();
             Produto produto = new Produto(nomeProduto, new Preco(preco), quantidade);
             venda.AdicionarProduto(produto);
-            venda.SelecionarVendedor(vendedor);
+            venda.DefinirVendedor(vendedor);
 
             venda.DefinirDescontoProduto(produto.Id, desconto);
         }
@@ -36,7 +36,7 @@ namespace VendaDDD.Tests.Entities
             Venda venda = new Venda();
             Produto produto = new Produto(nomeProduto, new Preco(preco), quantidade);
             venda.AdicionarProduto(produto);
-            venda.SelecionarVendedor(vendedor);
+            venda.DefinirVendedor(vendedor);
 
             Assert.Throws<ArgumentException>(() => venda.DefinirDescontoProduto(produto.Id, desconto));
         }

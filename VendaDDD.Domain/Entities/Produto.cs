@@ -11,6 +11,7 @@ namespace VendaDDD.Domain.Entities
         public Preco Preco { get; private set; }
         public decimal? Desconto { get; private set; }
         public int QuantidadeEmMaos { get; private set; }
+        public Venda Venda { get; private set; }
         public decimal ValorBruto => Preco.PrecoVenda * QuantidadeEmMaos;
         public decimal ValorLiquido => ValorBruto - Desconto.GetValueOrDefault();
 
@@ -37,6 +38,11 @@ namespace VendaDDD.Domain.Entities
                 throw new ArgumentException("Quantidade não pode ser Zero");
 
             QuantidadeEmMaos += quantidade;
+        }
+
+        public void DefinirVenda(Venda venda)
+        {
+            Venda = venda;
         }
     }
 }
