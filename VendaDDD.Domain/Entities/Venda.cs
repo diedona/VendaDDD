@@ -44,5 +44,24 @@ namespace VendaDDD.Domain.Entities
             else
                 produtoJaExistente.AdicionarQuantidade(produto.QuantidadeEmMaos);
         }
+
+        public void DefinirDescontoProduto(Guid idProduto, decimal desconto)
+        {
+            if (Vendedor == null)
+                throw new Exception("Necessário selecionar o vendedor");
+
+            var produto = _Produtos.FirstOrDefault(x => x.Id.Equals(idProduto));
+            if (produto == null)
+                throw new ArgumentException($"{idProduto} não é um produto desta venda");
+
+            decimal valorProduto = produto.ValorBruto;
+            decimal porcentagemDescontoProduto = ((desconto * 100.0m) / valorProduto);
+            decimal limiteDescontoPorcentagemVendedor = Vendedor.PegarLimiteDescontoPorcentagem();
+
+            if (porcentagemDescontoProduto > limiteDescontoPorcentagemVendedor)
+                throw new ArgumentException($"Vendedor selecionado não pode dar desconto de {porcentagemDescontoProduto}, limite de {limiteDescontoPorcentagemVendedor}");
+
+            produto.DarDesconto(desconto);
+        }
     }
 }

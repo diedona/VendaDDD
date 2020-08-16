@@ -17,5 +17,20 @@ namespace VendaDDD.Domain.Entities
             NomeCompleto = nomeCompleto;
             Nivel = nivel;
         }
+
+        public decimal PegarLimiteDescontoPorcentagem()
+        {
+            switch (Nivel)
+            {
+                case NivelVendedor.Junior:
+                    return 10m;
+                case NivelVendedor.Pleno:
+                    return 15m;
+                case NivelVendedor.Senior:
+                    return 20m;
+                default:
+                    throw new Exception("Nível desconhecido");
+            }
+        }
     }
 }
