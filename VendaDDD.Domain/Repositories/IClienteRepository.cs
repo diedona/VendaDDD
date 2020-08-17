@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using VendaDDD.Domain.Entities;
+using VendaBC.Domain.Entities;
 
-namespace VendaDDD.Domain.Repositories
+namespace VendaBC.Domain.Repositories
 {
     public interface IClienteRepository
     {

@@ -2,11 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
-using VendaDDD.Domain.Entities;
-using VendaDDD.Domain.Enums;
+using VendaBC.Domain.Entities;
+using VendaBC.Domain.Enums;
 using Xunit;
 
-namespace VendaDDD.Tests.Entities
+namespace VendaBC.Tests.Entities
 {
     public class ProdutoTests
     {

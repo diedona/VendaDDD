@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace VendaDDD.Shared.Entities
+namespace SharedKernel.Entities
 {
     public abstract class Entity
     {

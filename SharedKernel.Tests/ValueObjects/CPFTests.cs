@@ -1,10 +1,10 @@
-﻿using System;
+﻿using SharedKernel.ValueObjects.Documentos;
+using System;
 using System.Collections.Generic;
 using System.Text;
-using VendaDDD.Shared.ValueObjects.Documentos;
 using Xunit;
 
-namespace VendaDDD.Tests.ValueObjects
+namespace SharedKernel.Tests.ValueObjects
 {
     public class CPFTests
     {
@@ -13,7 +13,7 @@ namespace VendaDDD.Tests.ValueObjects
         [InlineData("315.171.786-49")]
         public void CPF_Invalido_LancarExcecao(string cpf)
         {
-             Assert.Throws<ArgumentException>(() => new CPF(cpf));
+            Assert.Throws<ArgumentException>(() => new CPF(cpf));
         }
 
         [Theory]

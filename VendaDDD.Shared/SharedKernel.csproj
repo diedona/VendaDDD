@@ -2,10 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>SharedKernel</AssemblyName>
   </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\VendaDDD.Shared\VendaDDD.Shared.csproj" />
-  </ItemGroup>
 
 </Project>

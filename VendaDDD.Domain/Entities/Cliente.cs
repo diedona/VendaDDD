@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using VendaDDD.Shared.Entities;
-using VendaDDD.Shared.ValueObjects;
-using VendaDDD.Shared.ValueObjects.Documentos;
+using SharedKernel.Entities;
+using SharedKernel.ValueObjects;
+using SharedKernel.ValueObjects.Documentos;
 
-namespace VendaDDD.Domain.Entities
+namespace VendaBC.Domain.Entities
 {
     public class Cliente : Entity
     {

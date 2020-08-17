@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using VendaDDD.Domain.Enums;
-using VendaDDD.Shared.Entities;
+using VendaBC.Domain.Enums;
+using SharedKernel.Entities;
 
-namespace VendaDDD.Domain.Entities
+namespace VendaBC.Domain.Entities
 {
     public class Vendedor : Entity
     {

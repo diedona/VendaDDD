@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace VendaDDD.Shared.ValueObjects.Documentos
+namespace SharedKernel.ValueObjects.Documentos
 {
     public abstract class Documento : ValueObject
     {

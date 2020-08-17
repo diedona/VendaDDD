@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using VendaDDD.Shared.Entities;
+using SharedKernel.Entities;
 
-namespace VendaDDD.Domain.Entities
+namespace VendaBC.Domain.Entities
 {
     public class Preco : Entity
     {

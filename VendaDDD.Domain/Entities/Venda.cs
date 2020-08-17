@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using VendaDDD.Shared.Entities;
+using SharedKernel.Entities;
 
-namespace VendaDDD.Domain.Entities
+namespace VendaBC.Domain.Entities
 {
     public class Venda : Entity
     {

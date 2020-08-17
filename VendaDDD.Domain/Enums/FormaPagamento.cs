@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace VendaDDD.Domain.Enums
+namespace VendaBC.Domain.Enums
 {
     public enum FormaPagamento
     {
