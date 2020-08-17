@@ -15,6 +15,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{24766E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedKernel.Tests", "SharedKernel.Tests\SharedKernel.Tests.csproj", "{6CE98459-EFE5-498F-B463-D78F73EA1D05}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Seguranca", "Seguranca", "{13A2D6B9-A066-4FD2-A4E3-057B97DDAA8E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SegurancaBC.Domain", "SegurancaBC.Domain\SegurancaBC.Domain.csproj", "{55A4268C-B5BA-4EDC-8C2A-571E0EBA214B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +41,10 @@ Global
 		{6CE98459-EFE5-498F-B463-D78F73EA1D05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6CE98459-EFE5-498F-B463-D78F73EA1D05}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6CE98459-EFE5-498F-B463-D78F73EA1D05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55A4268C-B5BA-4EDC-8C2A-571E0EBA214B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55A4268C-B5BA-4EDC-8C2A-571E0EBA214B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55A4268C-B5BA-4EDC-8C2A-571E0EBA214B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55A4268C-B5BA-4EDC-8C2A-571E0EBA214B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +54,7 @@ Global
 		{689063ED-357D-441A-A4F2-8C9731A5172B} = {24766E61-3F72-4ABA-8F61-FF2344CF5866}
 		{7D82C9A1-BA2E-4793-96FE-BCDFB52D47C0} = {44C9076E-2105-4BC4-8A12-37D2202AA9C5}
 		{6CE98459-EFE5-498F-B463-D78F73EA1D05} = {24766E61-3F72-4ABA-8F61-FF2344CF5866}
+		{55A4268C-B5BA-4EDC-8C2A-571E0EBA214B} = {13A2D6B9-A066-4FD2-A4E3-057B97DDAA8E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A27EF464-6F52-4C1F-AEC0-E6EB57705969}
