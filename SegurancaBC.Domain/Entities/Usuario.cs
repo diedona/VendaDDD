@@ -1,4 +1,5 @@
 ﻿using SharedKernel.Entities;
+using SharedKernel.Utils.Security;
 using SharedKernel.ValueObjects;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,14 @@ namespace SegurancaBC.Domain.Entities
         {
             NomeDeUsuario = nomeDeUsuario;
             Ativo = false;
+        }
+
+        public string GerarHash(string password)
+        {
+            if (string.IsNullOrEmpty(password))
+                throw new ArgumentException("Password vazio");
+
+            return GeradorDeHash.GerarHash(password);
         }
     }
 }

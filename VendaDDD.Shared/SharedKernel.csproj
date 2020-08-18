@@ -5,4 +5,8 @@
     <AssemblyName>SharedKernel</AssemblyName>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation" Version="3.1.7" />
+  </ItemGroup>
+
 </Project>
