@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using FluentValidation.Results;
 using SharedKernel.Entities;
 using SharedKernel.ValueObjects;
 using SharedKernel.ValueObjects.Documentos;
@@ -20,6 +21,11 @@ namespace VendaBC.Domain.Entities
             CPF = cpf;
             RG = rg;
             Email = email;
+        }
+
+        public override ValidationResult Validar()
+        {
+            throw new NotImplementedException();
         }
     }
 }

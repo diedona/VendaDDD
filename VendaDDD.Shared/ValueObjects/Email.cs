@@ -17,6 +17,6 @@ namespace SharedKernel.ValueObjects
             _Validator = new EmailValidator();
         }
 
-        public override ValidationResult EstaValido() => _Validator.Validate(new ValidationContext<Email>(this));
+        public override ValidationResult Validar() => _Validator.Validate(new ValidationContext<Email>(this));
     }
 }

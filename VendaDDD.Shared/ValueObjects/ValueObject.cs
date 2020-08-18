@@ -10,6 +10,6 @@ namespace SharedKernel.ValueObjects
     {
         protected IValidator _Validator;
 
-        public abstract ValidationResult EstaValido();
+        public abstract ValidationResult Validar();
     }
 }

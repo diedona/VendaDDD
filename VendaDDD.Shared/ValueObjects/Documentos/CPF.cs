@@ -14,7 +14,7 @@ namespace SharedKernel.ValueObjects.Documentos
 				throw new ArgumentException($"CPF inválido ({numero})");
         }
 
-		public override ValidationResult EstaValido() => _Validator.Validate(new ValidationContext<CPF>(this));
+		public override ValidationResult Validar() => _Validator.Validate(new ValidationContext<CPF>(this));
 
 		private bool ValidarCPF(string cpf)
 		{

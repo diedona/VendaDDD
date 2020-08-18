@@ -12,6 +12,6 @@ namespace SharedKernel.ValueObjects.Documentos
         {
         }
 
-        public override ValidationResult EstaValido() => _Validator.Validate(new ValidationContext<RG>(this));
+        public override ValidationResult Validar() => _Validator.Validate(new ValidationContext<RG>(this));
     }
 }

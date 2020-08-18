@@ -1,4 +1,5 @@
-﻿using SharedKernel.Entities;
+﻿using FluentValidation.Results;
+using SharedKernel.Entities;
 using SharedKernel.Utils.Security;
 using SharedKernel.ValueObjects;
 using System;
@@ -36,6 +37,11 @@ namespace SegurancaBC.Domain.Entities
                 throw new Exception("Salt não presente");
 
             return GerenciadorDeHash.ValidarHash(Password, Salt, senha);
+        }
+
+        public override ValidationResult Validar()
+        {
+            throw new NotImplementedException();
         }
     }
 }
