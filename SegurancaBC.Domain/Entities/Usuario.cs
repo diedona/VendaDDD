@@ -11,6 +11,8 @@ namespace SegurancaBC.Domain.Entities
     {
         public Email NomeDeUsuario { get; private set; }
         public bool Ativo { get; private set; }
+        public string Password { get; set; }
+        public string Salt { get; set; }
 
         public Usuario(Email nomeDeUsuario, Guid? id = null) : base(id)
         {
@@ -18,12 +20,22 @@ namespace SegurancaBC.Domain.Entities
             Ativo = false;
         }
 
-        public string GerarHash(string password)
+        public void DefinirSenha(string senha)
         {
-            if (string.IsNullOrEmpty(password))
-                throw new ArgumentException("Password vazio");
+            var (salt, hash) = GerenciadorDeHash.GerarHash(senha);
+            Password = hash;
+            Salt = salt;
+        }
 
-            return GeradorDeHash.GerarHash(password);
+        public bool CompararSenha(string senha)
+        {
+            if (string.IsNullOrEmpty(Password))
+                throw new Exception("Password não presente");
+
+            if (string.IsNullOrEmpty(Salt))
+                throw new Exception("Salt não presente");
+
+            return GerenciadorDeHash.ValidarHash(Password, Salt, senha);
         }
     }
 }
