@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using FluentValidation;
 using FluentValidation.Results;
 using SharedKernel.Entities;
 using SharedKernel.ValueObjects;
 using SharedKernel.ValueObjects.Documentos;
+using VendaBC.Domain.Validations.Entities;
 
 namespace VendaBC.Domain.Entities
 {
@@ -21,11 +23,10 @@ namespace VendaBC.Domain.Entities
             CPF = cpf;
             RG = rg;
             Email = email;
+
+            _Validator = new ClienteValidator();
         }
 
-        public override ValidationResult Validar()
-        {
-            throw new NotImplementedException();
-        }
+        public override ValidationResult Validar() => _Validator.Validate(new ValidationContext<Cliente>(this));
     }
 }
