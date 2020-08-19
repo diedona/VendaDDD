@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using FluentValidation.Results;
 using SharedKernel.Entities;
 
 namespace VendaBC.Domain.Entities
@@ -71,11 +70,6 @@ namespace VendaBC.Domain.Entities
                 throw new ArgumentException($"Vendedor selecionado não pode dar desconto de {porcentagemDescontoProduto}%, limite de {limiteDescontoPorcentagemVendedor}%");
 
             produto.DarDesconto(desconto);
-        }
-
-        public override ValidationResult Validar()
-        {
-            throw new NotImplementedException();
         }
     }
 }

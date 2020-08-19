@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using FluentValidation.Results;
 using SharedKernel.Entities;
 
 namespace VendaBC.Domain.Entities
@@ -28,11 +27,6 @@ namespace VendaBC.Domain.Entities
         public void DefinirProduto(Produto produto)
         {
             Produto = produto;
-        }
-
-        public override ValidationResult Validar()
-        {
-            throw new NotImplementedException();
         }
     }
 }

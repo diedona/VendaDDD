@@ -1,6 +1,4 @@
-﻿using FluentValidation;
-using FluentValidation.Results;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -13,8 +11,6 @@ namespace SharedKernel.ValueObjects.Documentos
 			if (!ValidarCPF(numero))
 				throw new ArgumentException($"CPF inválido ({numero})");
         }
-
-		public override ValidationResult Validar() => _Validator.Validate(new ValidationContext<CPF>(this));
 
 		private bool ValidarCPF(string cpf)
 		{

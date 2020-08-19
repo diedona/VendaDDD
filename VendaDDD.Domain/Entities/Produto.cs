@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using VendaBC.Domain.Enums;
 using SharedKernel.Entities;
-using FluentValidation.Results;
 
 namespace VendaBC.Domain.Entities
 {
@@ -61,11 +60,6 @@ namespace VendaBC.Domain.Entities
                 default:
                     throw new Exception("Forma de pagamento desconhecida");
             }
-        }
-
-        public override ValidationResult Validar()
-        {
-            throw new NotImplementedException();
         }
     }
 }

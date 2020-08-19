@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using VendaBC.Domain.Enums;
 using SharedKernel.Entities;
-using FluentValidation.Results;
 
 namespace VendaBC.Domain.Entities
 {
@@ -53,11 +52,6 @@ namespace VendaBC.Domain.Entities
                 if (PorcentagemEntrada.HasValue && PorcentagemEntrada.Value == 100m)
                     throw new ArgumentException("Plano a prazo não pode conter uma porcentagem de entrada igual a 100%");
             }
-        }
-
-        public override ValidationResult Validar()
-        {
-            throw new NotImplementedException();
         }
     }
 }
