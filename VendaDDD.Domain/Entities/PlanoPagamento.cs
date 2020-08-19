@@ -30,27 +30,27 @@ namespace VendaBC.Domain.Entities
             DiasPrimeiraParcela = diasPrimeiraParcela;
 
             if (PorcentagemEntrada.GetValueOrDefault() > 100 || PorcentagemEntrada.GetValueOrDefault() < 0)
-                throw new ArgumentOutOfRangeException($"Porcentagem de entrada inválida ({PorcentagemEntrada}%)");
+                AddNotification(nameof(PorcentagemEntrada), $"Porcentagem de entrada inválida ({PorcentagemEntrada}%)");
 
             if (FormaPagamento == FormaPagamento.Vista)
             {
                 if (DiasPrimeiraParcela.HasValue && DiasPrimeiraParcela.Value > LimiteDiasPagamentoVista)
-                    throw new ArgumentException($"Quantidade de dias para primeira parcela excedeu o limite de {LimiteDiasPagamentoVista}");
+                    AddNotification(nameof(DiasPrimeiraParcela), $"Quantidade de dias para primeira parcela excedeu o limite de {LimiteDiasPagamentoVista}");
 
                 if (PorcentagemEntrada.HasValue && PorcentagemEntrada.Value != 100m)
-                    throw new ArgumentException("Plano a vista não pode conter uma porcentagem de entrada diferente de 100%");
+                    AddNotification(nameof(PorcentagemEntrada), "Plano a vista não pode conter uma porcentagem de entrada diferente de 100%");
 
                 if (NumeroParcelas != 1)
-                    throw new ArgumentException("Plano a vista não pode conter um número de parcelas diferente de 1");
+                    AddNotification(nameof(NumeroParcelas), "Plano a vista não pode conter um número de parcelas diferente de 1");
             }
 
             if (FormaPagamento == FormaPagamento.Prazo)
             {
                 if (NumeroParcelas == 1 && DiasPrimeiraParcela.HasValue && DiasPrimeiraParcela.Value <= LimiteDiasPagamentoVista)
-                    throw new ArgumentException($"Quantidade de dias para primeira parcela está dentro do domínio de um plano a vista ({LimiteDiasPagamentoVista})");
+                    AddNotification(nameof(NumeroParcelas), $"Quantidade de dias para primeira parcela está dentro do domínio de um plano a vista ({LimiteDiasPagamentoVista})");
 
                 if (PorcentagemEntrada.HasValue && PorcentagemEntrada.Value == 100m)
-                    throw new ArgumentException("Plano a prazo não pode conter uma porcentagem de entrada igual a 100%");
+                    AddNotification(nameof(PorcentagemEntrada), "Plano a prazo não pode conter uma porcentagem de entrada igual a 100%");
             }
         }
     }

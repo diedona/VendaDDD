@@ -12,12 +12,7 @@ namespace VendaBC.Domain.Entities
         public decimal? PrecoVista { get; private set; }
         public decimal? PrecoPrazo { get; private set; }
 
-        public Preco(decimal precoVenda, Guid? id = null) : base(id)
-        {
-            PrecoVenda = precoVenda;
-        }
-
-        public Preco(decimal precoVenda, decimal? precoVista, decimal? precoPrazo, Guid? id = null) : base(id)
+        public Preco(decimal precoVenda, decimal? precoVista = null, decimal? precoPrazo = null, Guid? id = null) : base(id)
         {
             PrecoVenda = precoVenda;
             PrecoVista = precoVista;

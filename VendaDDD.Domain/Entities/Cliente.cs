@@ -20,6 +20,8 @@ namespace VendaBC.Domain.Entities
             CPF = cpf;
             RG = rg;
             Email = email;
+
+            AddNotifications(CPF, RG, Email);
         }
     }
 }

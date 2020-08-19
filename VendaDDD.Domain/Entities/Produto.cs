@@ -23,6 +23,8 @@ namespace VendaBC.Domain.Entities
             QuantidadeEmMaos = quantidadeEmMaos;
 
             Preco.DefinirProduto(this);
+
+            AddNotifications(preco);
         }
 
         public void DarDesconto(decimal desconto)
