@@ -1,8 +1,10 @@
 ﻿using SegurancaBC.Domain.Repositories;
+using SegurancaBC.Infrastructure.Connection;
 using SharedKernel.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Text;
 
 namespace SegurancaBC.Infrastructure.Repositories
@@ -14,9 +16,9 @@ namespace SegurancaBC.Infrastructure.Repositories
         private IDbTransaction _Transaction;
         private IUsuarioRepository _UsuarioRepository;
 
-        public UnitOfWork(IDbConnection connection)
+        public UnitOfWork(IConnectionData connection)
         {
-            _Connection = connection;
+            _Connection = new SqlConnection(connection.ConnectionString);
         }
 
         public void Begin()
