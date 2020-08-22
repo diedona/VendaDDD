@@ -19,7 +19,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Seguranca BoundedContext", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SegurancaBC.Domain", "SegurancaBC.Domain\SegurancaBC.Domain.csproj", "{55A4268C-B5BA-4EDC-8C2A-571E0EBA214B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SegurancaBC.Infrastructure", "SegurancaBC.Infrastructure\SegurancaBC.Infrastructure.csproj", "{245F804C-8F31-41C9-B0B7-1B43E6558027}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SegurancaBC.Infrastructure", "SegurancaBC.Infrastructure\SegurancaBC.Infrastructure.csproj", "{245F804C-8F31-41C9-B0B7-1B43E6558027}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{7281161C-2551-43B6-8709-1BCDBF5131A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{245F804C-8F31-41C9-B0B7-1B43E6558027}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{245F804C-8F31-41C9-B0B7-1B43E6558027}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{245F804C-8F31-41C9-B0B7-1B43E6558027}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7281161C-2551-43B6-8709-1BCDBF5131A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7281161C-2551-43B6-8709-1BCDBF5131A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7281161C-2551-43B6-8709-1BCDBF5131A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7281161C-2551-43B6-8709-1BCDBF5131A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

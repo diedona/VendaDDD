@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SegurancaBC.Domain\SegurancaBC.Domain.csproj" />
+    <ProjectReference Include="..\VendaDDD.Shared\SharedKernel.csproj" />
   </ItemGroup>
 
 </Project>
