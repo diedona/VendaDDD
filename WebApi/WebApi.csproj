@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
     <ProjectReference Include="..\SegurancaBC.Domain\SegurancaBC.Domain.csproj" />
-    <ProjectReference Include="..\SegurancaBC.Infrastructure\SegurancaBC.Infrastructure.csproj" />
     <ProjectReference Include="..\VendaDDD.Shared\SharedKernel.csproj" />
   </ItemGroup>
 

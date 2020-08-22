@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SegurancaBC.Infrastructure.Connection;
+using Infrastructure.Connection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
