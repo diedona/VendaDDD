@@ -7,7 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Text;
 
-namespace SegurancaBC.Infrastructure.Repositories
+namespace SegurancaBC.Infrastructure.Repositories.UoW
 {
     public class UnitOfWork : IUnitOfWork, IDisposable
     {
@@ -20,6 +20,8 @@ namespace SegurancaBC.Infrastructure.Repositories
         {
             _Connection = new SqlConnection(connection.ConnectionString);
         }
+
+        #region [ IUnitOfWork ]
 
         public void Begin()
         {
@@ -40,6 +42,19 @@ namespace SegurancaBC.Infrastructure.Repositories
 
         public IDbConnection Connection => _Connection;
         public IDbTransaction Transaction => _Transaction;
+
+        #endregion
+
+        public IUsuarioRepository UsuarioRepository
+        {
+            get
+            {
+                if (_UsuarioRepository == null)
+                    _UsuarioRepository = new UsuarioRepository(this);
+
+                return _UsuarioRepository;
+            }
+        }
 
         #region [ IDisposable ]
 
