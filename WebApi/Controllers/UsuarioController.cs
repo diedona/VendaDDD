@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Infrastructure.Repositories.UoW;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SegurancaBC.Domain.DTO;
+using SegurancaBC.Domain.Queries;
 using SharedKernel.ValueObjects;
 
 namespace WebApi.Controllers
@@ -11,31 +13,26 @@ namespace WebApi.Controllers
     [ApiController]
     public class UsuarioController : ControllerBase
     {
-        private readonly IUnitOfWork _UnitOfWork;
+        private readonly IMediator _Mediator;
 
-        public UsuarioController(IUnitOfWork unitOfWork)
+        public UsuarioController(IMediator mediator)
         {
-            _UnitOfWork = unitOfWork;
+            _Mediator = mediator;
         }
 
         [HttpGet]
-        [Route("{nomeDeUsuario}")]
-        public async Task<ActionResult<UsuarioDTO>> Get(string nomeDeUsuario)
+        public async Task<ActionResult<UsuarioDTO>> Get([FromQuery]PegarUsuarioPorNomeDeUsuarioQuery nomeDeUsuarioQuery)
         {
-            _UnitOfWork.Begin();
             try
             {
-                UsuarioDTO usuario = await _UnitOfWork.UsuarioRepository.CarregarUsuario(new Email(nomeDeUsuario));
-                _UnitOfWork.Commit();
-
+                UsuarioDTO usuario = await _Mediator.Send(nomeDeUsuarioQuery);
                 if (usuario == null)
-                    return NotFound();
+                    return NotFound("Usuário não encontrado");
                 else
                     return Ok(usuario);
             }
             catch (Exception ex)
             {
-                _UnitOfWork.RollBack();
                 return BadRequest(ex.Message);
             }
         }
