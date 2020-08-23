@@ -1,24 +1,25 @@
 ﻿using Infrastructure.Connection;
-using SegurancaBC.Domain.Repositories;
 using SharedKernel.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Text;
 
 namespace Infrastructure.Repositories.UoW
 {
     public class UnitOfWork : IUnitOfWork, IDisposable
     {
         private readonly IDbConnection _Connection;
+        private readonly Dictionary<Type, IRepository> _Repositories;
+        private readonly IServiceProvider _ServiceProvider;
         private bool disposedValue;
         private IDbTransaction _Transaction;
-        private IUsuarioRepository _UsuarioRepository;
 
-        public UnitOfWork(IConnectionData connection)
+        public UnitOfWork(IConnectionData connection, IServiceProvider serviceProvider)
         {
             _Connection = new SqlConnection(connection.ConnectionString);
+            _Repositories = new Dictionary<Type, IRepository>();
+            _ServiceProvider = serviceProvider;
         }
 
         #region [ IUnitOfWork ]
@@ -44,18 +45,22 @@ namespace Infrastructure.Repositories.UoW
         public IDbConnection Connection => _Connection;
         public IDbTransaction Transaction => _Transaction;
 
-        #endregion
-
-        public IUsuarioRepository UsuarioRepository
+        public void Registrar(IRepository repositorio)
         {
-            get
-            {
-                if (_UsuarioRepository == null)
-                    _UsuarioRepository = new UsuarioRepository(this);
+            _Repositories.Add(typeof(IRepository), repositorio);
+        }
 
-                return _UsuarioRepository;
+        public TRepositorio PegarRepositorio<TRepositorio>(Type tipoRepositorio) where TRepositorio : IRepository
+        {
+            if (_Repositories.ContainsKey(tipoRepositorio))
+                return (TRepositorio)_Repositories[tipoRepositorio];
+            else
+            {
+                return (TRepositorio)_ServiceProvider.GetService(tipoRepositorio);
             }
         }
+
+        #endregion
 
         #region [ IDisposable ]
 

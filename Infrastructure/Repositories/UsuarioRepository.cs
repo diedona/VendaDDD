@@ -13,11 +13,12 @@ namespace Infrastructure.Repositories
 {
     public class UsuarioRepository : IUsuarioRepository
     {
-        private readonly ISharedUnitOfWork _UoW;
+        private readonly IUnitOfWork _UoW;
 
-        public UsuarioRepository(ISharedUnitOfWork sharedUnitOfWork)
+        public UsuarioRepository(IUnitOfWork uow)
         {
-            _UoW = sharedUnitOfWork;
+            _UoW = uow;
+            _UoW.Registrar(this);
         }
 
         public async Task AtivarUsuario(Email nomeDeUsuario)

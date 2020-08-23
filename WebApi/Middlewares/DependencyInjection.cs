@@ -1,12 +1,10 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Infrastructure.Connection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using WebApi.Connection;
 using Infrastructure.Repositories.UoW;
+using SharedKernel.Repositories;
+using SegurancaBC.Domain.Repositories;
+using Infrastructure.Repositories;
 
 namespace WebApi.Middlewares
 {
@@ -16,6 +14,7 @@ namespace WebApi.Middlewares
         {
             services.AddSingleton<IConnectionData, ConnectionData>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IUsuarioRepository, UsuarioRepository>();
         }
     }
 }

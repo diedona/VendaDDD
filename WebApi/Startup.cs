@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using SegurancaBC.Domain.Handlers;
 using WebApi.Middlewares;
 
 namespace WebApi
@@ -30,7 +31,7 @@ namespace WebApi
         {
             services.AddControllers();
             services.AddDependencyInjection();
-            services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddMediatR(typeof(SegurancaHandler));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

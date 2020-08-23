@@ -1,15 +1,13 @@
-﻿using Infrastructure.Repositories.UoW;
-using MediatR;
+﻿using MediatR;
 using SegurancaBC.Domain.DTO;
 using SegurancaBC.Domain.Queries;
+using SegurancaBC.Domain.Repositories;
+using SharedKernel.Repositories;
 using SharedKernel.ValueObjects;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace WebApi.Handlers.Usuario.Queries
+namespace SegurancaBC.Handlers.Queries
 {
     public class PegarUsuarioPorNomeDeUsuarioHandler : IRequestHandler<PegarUsuarioPorNomeDeUsuarioQuery, UsuarioDTO>
     {
@@ -22,7 +20,8 @@ namespace WebApi.Handlers.Usuario.Queries
 
         public async Task<UsuarioDTO> Handle(PegarUsuarioPorNomeDeUsuarioQuery request, CancellationToken cancellationToken)
         {
-            UsuarioDTO usuario = await _UoW.UsuarioRepository.CarregarUsuario(new Email(request.NomeDeUsuario));
+            IUsuarioRepository usuarioRepository = _UoW.PegarRepositorio<IUsuarioRepository>(typeof(IUsuarioRepository));
+            UsuarioDTO usuario = await usuarioRepository.CarregarUsuario(new Email(request.NomeDeUsuario));
             return usuario;
         }
     }
