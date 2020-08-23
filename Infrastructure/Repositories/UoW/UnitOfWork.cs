@@ -9,15 +9,16 @@ namespace Infrastructure.Repositories.UoW
 {
     public class UnitOfWork : IUnitOfWork, IDisposable
     {
-        private readonly IDbConnection _Connection;
         private readonly Dictionary<Type, IRepository> _Repositories;
         private readonly IServiceProvider _ServiceProvider;
         private bool disposedValue;
-        private IDbTransaction _Transaction;
+
+        public IDbConnection Connection { get; }
+        public IDbTransaction Transaction { get; private set; }
 
         public UnitOfWork(IConnectionData connection, IServiceProvider serviceProvider)
         {
-            _Connection = new SqlConnection(connection.ConnectionString);
+            Connection = new SqlConnection(connection.ConnectionString);
             _Repositories = new Dictionary<Type, IRepository>();
             _ServiceProvider = serviceProvider;
         }
@@ -26,24 +27,21 @@ namespace Infrastructure.Repositories.UoW
 
         public void Begin()
         {
-            _Connection.Open();
-            _Transaction = _Connection.BeginTransaction();
+            Connection.Open();
+            Transaction = Connection.BeginTransaction();
         }
 
         public void Commit()
         {
-            _Transaction.Commit();
+            Transaction.Commit();
             Dispose();
         }
 
         public void RollBack()
         {
-            _Transaction.Rollback();
+            Transaction.Rollback();
             Dispose();
         }
-
-        public IDbConnection Connection => _Connection;
-        public IDbTransaction Transaction => _Transaction;
 
         public void Registrar(IRepository repositorio)
         {
@@ -73,10 +71,10 @@ namespace Infrastructure.Repositories.UoW
                 {
                     //dispose managed state (managed objects)
 
-                    if (_Transaction != null)
-                        _Transaction.Dispose();
+                    if (Transaction != null)
+                        Transaction.Dispose();
 
-                    _Transaction = null;
+                    Transaction = null;
                 }
 
                 // TODO: free unmanaged resources (unmanaged objects) and override finalizer
