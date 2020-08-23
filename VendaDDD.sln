@@ -9,19 +9,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedKernel", "VendaDDD.Sh
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VendaBC.Tests", "VendaDDD.Tests\VendaBC.Tests.csproj", "{7D82C9A1-BA2E-4793-96FE-BCDFB52D47C0}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Venda BoundedContext", "Venda BoundedContext", "{44C9076E-2105-4BC4-8A12-37D2202AA9C5}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Venda", "Venda", "{44C9076E-2105-4BC4-8A12-37D2202AA9C5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{24766E61-3F72-4ABA-8F61-FF2344CF5866}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedKernel.Tests", "SharedKernel.Tests\SharedKernel.Tests.csproj", "{6CE98459-EFE5-498F-B463-D78F73EA1D05}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Seguranca BoundedContext", "Seguranca BoundedContext", "{13A2D6B9-A066-4FD2-A4E3-057B97DDAA8E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Seguranca", "Seguranca", "{13A2D6B9-A066-4FD2-A4E3-057B97DDAA8E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SegurancaBC.Domain", "SegurancaBC.Domain\SegurancaBC.Domain.csproj", "{55A4268C-B5BA-4EDC-8C2A-571E0EBA214B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{7281161C-2551-43B6-8709-1BCDBF5131A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csproj", "{7281161C-2551-43B6-8709-1BCDBF5131A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{AD588442-94A9-4D96-91F7-D27602C335EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{AD588442-94A9-4D96-91F7-D27602C335EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

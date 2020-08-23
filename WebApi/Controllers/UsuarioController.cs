@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Infrastructure.Repositories.UoW;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SegurancaBC.Domain.DTO;
 using SegurancaBC.Domain.Queries;
-using SharedKernel.ValueObjects;
 
 namespace WebApi.Controllers
 {
