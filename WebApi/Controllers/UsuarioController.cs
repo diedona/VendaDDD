@@ -4,18 +4,16 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SegurancaBC.Domain.DTO;
 using SegurancaBC.Domain.Queries;
+using WebApi.Controllers.Base;
 
 namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsuarioController : ControllerBase
+    public class UsuarioController : ControllerCustomBase
     {
-        private readonly IMediator _Mediator;
-
-        public UsuarioController(IMediator mediator)
+        public UsuarioController(IMediator mediator) : base(mediator)
         {
-            _Mediator = mediator;
         }
 
         [HttpGet]
