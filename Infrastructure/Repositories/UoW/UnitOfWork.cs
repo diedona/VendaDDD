@@ -9,7 +9,6 @@ namespace Infrastructure.Repositories.UoW
 {
     public class UnitOfWork : IUnitOfWork, IDisposable
     {
-        private readonly Dictionary<Type, IRepository> _Repositories;
         private readonly IServiceProvider _ServiceProvider;
         private bool disposedValue;
 
@@ -19,7 +18,6 @@ namespace Infrastructure.Repositories.UoW
         public UnitOfWork(IConnectionData connection, IServiceProvider serviceProvider)
         {
             Connection = new SqlConnection(connection.ConnectionString);
-            _Repositories = new Dictionary<Type, IRepository>();
             _ServiceProvider = serviceProvider;
         }
 
@@ -43,20 +41,10 @@ namespace Infrastructure.Repositories.UoW
             Dispose();
         }
 
-        public void Registrar(IRepository repositorio)
-        {
-            _Repositories.Add(typeof(IRepository), repositorio);
-        }
-
         public TRepositorio PegarRepositorio<TRepositorio>() where TRepositorio : IRepository
         {
             Type tipoRepositorio = typeof(TRepositorio);
-            if (_Repositories.ContainsKey(tipoRepositorio))
-                return (TRepositorio)_Repositories[tipoRepositorio];
-            else
-            {
-                return (TRepositorio)_ServiceProvider.GetService(tipoRepositorio);
-            }
+            return (TRepositorio)_ServiceProvider.GetService(tipoRepositorio);
         }
 
         #endregion
