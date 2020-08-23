@@ -25,6 +25,7 @@ namespace Infrastructure.Repositories.UoW
 
         public void Begin()
         {
+            _Connection.Open();
             _Transaction = _Connection.BeginTransaction();
         }
 

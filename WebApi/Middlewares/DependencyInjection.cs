@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApi.Connection;
+using Infrastructure.Repositories.UoW;
 
 namespace WebApi.Middlewares
 {
@@ -14,6 +15,7 @@ namespace WebApi.Middlewares
         public static void AddDependencyInjection(this IServiceCollection services)
         {
             services.AddSingleton<IConnectionData, ConnectionData>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
     }
 }

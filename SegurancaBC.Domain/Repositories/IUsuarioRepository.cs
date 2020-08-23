@@ -1,16 +1,18 @@
-﻿using SegurancaBC.Domain.Entities;
+﻿using SegurancaBC.Domain.DTO;
+using SegurancaBC.Domain.Entities;
 using SharedKernel.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SegurancaBC.Domain.Repositories
 {
     public interface IUsuarioRepository
     {
-        Usuario CarregarUsuario(Email nomeDeUsuario);
-        void InserirUsuario(Usuario usuario);
-        void AtivarUsuario(Email nomeDeUsuario);
-        void InativarUsuario(Email nomeDeUsuario);
+        Task<UsuarioDTO> CarregarUsuario(Email nomeDeUsuario);
+        Task InserirUsuario(Usuario usuario);
+        Task AtivarUsuario(Email nomeDeUsuario);
+        Task InativarUsuario(Email nomeDeUsuario);
     }
 }
