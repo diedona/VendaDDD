@@ -50,8 +50,9 @@ namespace Infrastructure.Repositories.UoW
             _Repositories.Add(typeof(IRepository), repositorio);
         }
 
-        public TRepositorio PegarRepositorio<TRepositorio>(Type tipoRepositorio) where TRepositorio : IRepository
+        public TRepositorio PegarRepositorio<TRepositorio>() where TRepositorio : IRepository
         {
+            Type tipoRepositorio = typeof(TRepositorio);
             if (_Repositories.ContainsKey(tipoRepositorio))
                 return (TRepositorio)_Repositories[tipoRepositorio];
             else

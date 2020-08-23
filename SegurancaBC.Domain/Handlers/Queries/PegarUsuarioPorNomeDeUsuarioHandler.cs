@@ -20,7 +20,7 @@ namespace SegurancaBC.Handlers.Queries
 
         public async Task<UsuarioDTO> Handle(PegarUsuarioPorNomeDeUsuarioQuery request, CancellationToken cancellationToken)
         {
-            IUsuarioRepository usuarioRepository = _UoW.PegarRepositorio<IUsuarioRepository>(typeof(IUsuarioRepository));
+            IUsuarioRepository usuarioRepository = _UoW.PegarRepositorio<IUsuarioRepository>();
             UsuarioDTO usuario = await usuarioRepository.CarregarUsuario(new Email(request.NomeDeUsuario));
             return usuario;
         }

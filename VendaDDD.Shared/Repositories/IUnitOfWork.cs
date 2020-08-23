@@ -12,7 +12,7 @@ namespace SharedKernel.Repositories
         void RollBack();
 
         void Registrar(IRepository repositorio);
-        TRepositorio PegarRepositorio<TRepositorio>(Type tipo) where TRepositorio : IRepository;
+        TRepositorio PegarRepositorio<TRepositorio>() where TRepositorio : IRepository;
 
         IDbConnection Connection { get; }
         IDbTransaction Transaction { get; }
