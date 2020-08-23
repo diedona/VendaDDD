@@ -19,6 +19,8 @@ namespace SegurancaBC.Domain.Entities
             NomeDeUsuario = nomeDeUsuario;
             Ativo = false;
             _HashService = hashService;
+
+            AddNotifications(nomeDeUsuario);
         }
 
         public void DefinirHashService(IHashService hashService)

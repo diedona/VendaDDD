@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using SegurancaBC.Domain.DTO.Usuario;
+using SegurancaBC.Domain.Entities;
 using SegurancaBC.Domain.Queries;
 using SegurancaBC.Domain.Repositories;
 using SharedKernel.Handlers;
