@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using SegurancaBC.Domain.DTO;
+using SegurancaBC.Domain.DTO.Usuario;
 using SegurancaBC.Domain.Entities;
 using SegurancaBC.Domain.Repositories;
 using SharedKernel.Repositories;
@@ -25,12 +26,14 @@ namespace Infrastructure.Repositories
             throw new NotImplementedException();
         }
 
-        public async Task<UsuarioDTO> CarregarUsuario(Email nomeDeUsuario)
+        public async Task<UsuarioAutenticacaoDTO> CarregarUsuario(Email nomeDeUsuario)
         {
             DynamicParameters parameters = new DynamicParameters();
             parameters.Add("@NomeDeUsuario", nomeDeUsuario.Endereco, System.Data.DbType.String);
-            return await _UoW.Connection.QueryFirstOrDefaultAsync<UsuarioDTO>(
-                "SELECT * FROM USUARIO WHERE NOMEDEUSUARIO = @NomeDeUsuario", parameters, transaction: _UoW.Transaction);
+            return await _UoW.Connection.QueryFirstOrDefaultAsync<UsuarioAutenticacaoDTO>(
+                @"  SELECT  Id, NomeDeUsuario, Salt, Password, Ativo
+                    FROM    Usuario U 
+                    WHERE   NomeDeUsuario = @NomeDeUsuario", parameters, transaction: _UoW.Transaction);
         }
 
         public async Task InativarUsuario(Email nomeDeUsuario)

@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SegurancaBC.Domain.DTO.Usuario;
+using SegurancaBC.Domain.Queries;
 using WebApi.Controllers.Base;
 
 namespace WebApi.Controllers
@@ -17,6 +15,11 @@ namespace WebApi.Controllers
         {
         }
 
-
+        [HttpPost]
+        public async Task<ActionResult> Post([FromBody] FazerLoginQuery model)
+        {
+            UsuarioDTO usuario = await _Mediator.Send(model);
+            return Ok();
+        }
     }
 }
