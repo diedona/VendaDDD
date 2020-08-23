@@ -18,7 +18,6 @@ namespace Infrastructure.Repositories
         public UsuarioRepository(IUnitOfWork uow)
         {
             _UoW = uow;
-            _UoW.Registrar(this);
         }
 
         public async Task AtivarUsuario(Email nomeDeUsuario)
