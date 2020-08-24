@@ -28,9 +28,9 @@ namespace SegurancaBC.Domain.Handlers.Queries
                 var usuarioDTO = await _UsuarioApplicationService.FazerLogin(request);
                 _UoW.Commit();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
+                _UoW.RollBack();
                 throw;
             }
 
