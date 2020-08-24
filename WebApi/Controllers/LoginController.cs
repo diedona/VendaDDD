@@ -2,8 +2,8 @@
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using SegurancaBC.Application.UsuarioCases.FazerLogin;
 using SegurancaBC.Domain.DTO.Usuario;
-using SegurancaBC.Domain.Queries;
 using WebApi.Controllers.Base;
 
 namespace WebApi.Controllers

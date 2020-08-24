@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+    <ProjectReference Include="..\SegurancaBC.Application\SegurancaBC.Application.csproj" />
     <ProjectReference Include="..\SegurancaBC.Domain\SegurancaBC.Domain.csproj" />
     <ProjectReference Include="..\VendaDDD.Shared\SharedKernel.csproj" />
   </ItemGroup>

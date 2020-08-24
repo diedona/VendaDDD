@@ -12,7 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using SegurancaBC.Domain.Handlers;
+using SegurancaBC.Application.UsuarioCases.FazerLogin;
 using WebApi.Middlewares;
 
 namespace WebApi
@@ -31,7 +31,7 @@ namespace WebApi
         {
             services.AddControllers();
             services.AddDependencyInjection();
-            services.AddMediatR(typeof(SegurancaHandler));
+            services.AddMediatR(typeof(FazerLoginQuery));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

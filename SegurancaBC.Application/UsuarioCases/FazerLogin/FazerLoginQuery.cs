@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using SegurancaBC.Domain.DTO.Usuario;
 
-namespace SegurancaBC.Domain.Queries
+namespace SegurancaBC.Application.UsuarioCases.FazerLogin
 {
     public class FazerLoginQuery : IRequest<UsuarioDTO>
     {

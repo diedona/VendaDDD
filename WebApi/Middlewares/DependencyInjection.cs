@@ -8,7 +8,8 @@ using Infrastructure.Repositories;
 using SegurancaBC.Domain.InfrastructureServices;
 using Infrastructure.Seguranca;
 using SegurancaBC.Domain.DomainServices;
-using SegurancaBC.Domain.ApplicationServices;
+using Infrastructure.DependencyInjection;
+using SegurancaBC.Application.DependencyInjection;
 
 namespace WebApi.Middlewares
 {
@@ -17,11 +18,8 @@ namespace WebApi.Middlewares
         public static void AddDependencyInjection(this IServiceCollection services)
         {
             services.AddSingleton<IConnectionData, ConnectionData>();
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
-            services.AddScoped<IUsuarioRepository, UsuarioRepository>();
-            services.AddScoped<IHashService, GerenciadorDeHash>();
-            services.AddScoped<UsuarioDomainService>();
-            services.AddScoped<UsuarioApplicationService>();
+            services.AddInfrastructureDependencies();
+            services.AddSegurancaDependencies();
         }
     }
 }
