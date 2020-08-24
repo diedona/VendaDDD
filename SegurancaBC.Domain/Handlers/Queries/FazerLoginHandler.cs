@@ -1,16 +1,10 @@
 ﻿using MediatR;
-using SegurancaBC.Domain.DomainServices;
+using SegurancaBC.Domain.ApplicationServices;
 using SegurancaBC.Domain.DTO.Usuario;
-using SegurancaBC.Domain.Entities;
 using SegurancaBC.Domain.Queries;
-using SegurancaBC.Domain.Repositories;
-using SegurancaBC.Domain.Services;
 using SharedKernel.Handlers;
 using SharedKernel.Repositories;
-using SharedKernel.ValueObjects;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -18,26 +12,27 @@ namespace SegurancaBC.Domain.Handlers.Queries
 {
     public class FazerLoginHandler : BaseHandler, IRequestHandler<FazerLoginQuery, UsuarioDTO>
     {
-        private readonly UsuarioService _UsuarioService;
+        private readonly UsuarioApplicationService _UsuarioApplicationService;
 
-        public FazerLoginHandler(IUnitOfWork uow, UsuarioService usuarioService) : base(uow)
+        public FazerLoginHandler(IUnitOfWork uow, UsuarioApplicationService usuarioApplicationService) : base(uow)
         {
-            _UsuarioService = usuarioService;
+            _UsuarioApplicationService = usuarioApplicationService;
         }
 
         public async Task<UsuarioDTO> Handle(FazerLoginQuery request, CancellationToken cancellationToken)
         {
-            UsuarioAutenticacaoDTO autenticacao = await _UoW.PegarRepositorio<IUsuarioRepository>()
-                .CarregarUsuario(new Email(request.NomeDeUsuario));
+            _UoW.Begin();
 
-            if (autenticacao == null)
-                throw new Exception("Usuário não encontrado");
+            try
+            {
+                var usuarioDTO = await _UsuarioApplicationService.FazerLogin(request);
+                _UoW.Commit();
+            }
+            catch (Exception ex)
+            {
 
-            Usuario usuario = new Usuario(new Email(autenticacao.NomeDeUsuario), autenticacao.Id);
-            usuario.DefinirSenha(autenticacao.Salt, autenticacao.Password);
-
-            if (!_UsuarioService.CompararSenha(usuario, request.Senha))
-                throw new Exception("Usuário não encontrado");
+                throw;
+            }
 
             return new UsuarioDTO();
         }

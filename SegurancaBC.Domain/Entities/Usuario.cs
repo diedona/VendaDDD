@@ -1,5 +1,4 @@
-﻿using SegurancaBC.Domain.Services;
-using SharedKernel.Entities;
+﻿using SharedKernel.Entities;
 using SharedKernel.ValueObjects;
 using System;
 

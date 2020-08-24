@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SegurancaBC.Domain.Services
+namespace SegurancaBC.Domain.InfrastructureServices
 {
     public interface IHashService
     {

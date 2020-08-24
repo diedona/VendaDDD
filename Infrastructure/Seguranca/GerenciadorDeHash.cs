@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Cryptography.KeyDerivation;
-using SegurancaBC.Domain.Services;
+using SegurancaBC.Domain.InfrastructureServices;
 using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;

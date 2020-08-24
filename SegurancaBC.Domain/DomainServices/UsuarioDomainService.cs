@@ -1,16 +1,16 @@
 ﻿using SegurancaBC.Domain.Entities;
-using SegurancaBC.Domain.Services;
+using SegurancaBC.Domain.InfrastructureServices;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace SegurancaBC.Domain.DomainServices
 {
-    public class UsuarioService
+    public class UsuarioDomainService
     {
         private readonly IHashService _HashService;
 
-        public UsuarioService(IHashService hashService)
+        public UsuarioDomainService(IHashService hashService)
         {
             _HashService = hashService;
         }
