@@ -7,49 +7,23 @@ namespace SegurancaBC.Domain.Entities
 {
     public class Usuario : Entity
     {
-        private IHashService _HashService;
-
         public Email NomeDeUsuario { get; private set; }
         public bool Ativo { get; private set; }
-        public string Password { get; set; }
-        public string Salt { get; set; }
+        public string Password { get; private set; }
+        public string Salt { get; private set; }
 
-        public Usuario(Email nomeDeUsuario, IHashService hashService = null, Guid? id = null) : base(id)
+        public Usuario(Email nomeDeUsuario, Guid? id = null) : base(id)
         {
             NomeDeUsuario = nomeDeUsuario;
             Ativo = false;
-            _HashService = hashService;
 
             AddNotifications(nomeDeUsuario);
         }
 
-        public void DefinirHashService(IHashService hashService)
+        public void DefinirSenha(string salt, string hash)
         {
-            _HashService = hashService;
-        }
-
-        public void DefinirSenha(string senha)
-        {
-            if (_HashService == null)
-                throw new MemberAccessException("HashService não foi definido");
-
-            var (salt, hash) = _HashService.GerarHash(senha);
-            Password = hash;
             Salt = salt;
-        }
-
-        public bool CompararSenha(string senha)
-        {
-            if (_HashService == null)
-                throw new MemberAccessException("HashService não foi definido");
-
-            if (string.IsNullOrEmpty(Password))
-                throw new Exception("Password não presente");
-
-            if (string.IsNullOrEmpty(Salt))
-                throw new Exception("Salt não presente");
-
-            return _HashService.ValidarHash(Password, Salt, senha);
+            Password = hash;
         }
     }
 }

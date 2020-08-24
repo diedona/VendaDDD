@@ -20,14 +20,14 @@ namespace Infrastructure.Seguranca
                 rng.GetBytes(salt);
             }
 
-            string hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
+            string hash = Convert.ToBase64String(KeyDerivation.Pbkdf2(
                 password: texto,
                 salt: salt,
                 prf: KeyDerivationPrf.HMACSHA1,
                 iterationCount: ITERATION_COUNT,
                 numBytesRequested: 256 / 8));
 
-            return (Convert.ToBase64String(salt), hashed);
+            return (Convert.ToBase64String(salt), hash);
         }
 
         public bool ValidarHash(string hashOriginal, string salt, string texto)

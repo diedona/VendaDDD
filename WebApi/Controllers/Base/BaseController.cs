@@ -15,5 +15,10 @@ namespace WebApi.Controllers.Base
         {
             _Mediator = mediator;
         }
+
+        protected ActionResult RetornarBadRequest(Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
     }
 }

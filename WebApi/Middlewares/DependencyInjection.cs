@@ -5,6 +5,9 @@ using Infrastructure.Repositories.UoW;
 using SharedKernel.Repositories;
 using SegurancaBC.Domain.Repositories;
 using Infrastructure.Repositories;
+using SegurancaBC.Domain.Services;
+using Infrastructure.Seguranca;
+using SegurancaBC.Domain.DomainServices;
 
 namespace WebApi.Middlewares
 {
@@ -15,6 +18,8 @@ namespace WebApi.Middlewares
             services.AddSingleton<IConnectionData, ConnectionData>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            services.AddScoped<IHashService, GerenciadorDeHash>();
+            services.AddScoped<UsuarioService>();
         }
     }
 }
