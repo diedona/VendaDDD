@@ -19,6 +19,7 @@ namespace Infrastructure.DependencyInjection
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 
             services.AddScoped<IHashService, GerenciadorDeHash>();
+            services.AddScoped<ITokenService, GerenciadorDeToken>();
             return services;
         }
     }

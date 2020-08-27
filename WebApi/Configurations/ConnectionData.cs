@@ -1,12 +1,12 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
-using Infrastructure.Connection;
+using Infrastructure.Configurations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebApi.Connection
+namespace WebApi.Configurations
 {
     public class ConnectionData : IConnectionData
     {

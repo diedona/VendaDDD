@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Infrastructure.Connection
+namespace Infrastructure.Configurations
 {
     public interface IConnectionData
     {

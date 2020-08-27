@@ -28,7 +28,7 @@ namespace SegurancaBC.Application.UsuarioCases.FazerLogin
             if (autenticacao == null)
                 throw new Exception("Usuário não encontrado");
 
-            Usuario usuario = new Usuario(new Email(autenticacao.NomeDeUsuario), autenticacao.Id);
+            Usuario usuario = new Usuario(new Email(autenticacao.NomeDeUsuario), autenticacao.Ativo, autenticacao.Id);
             usuario.DefinirSenha(autenticacao.Salt, autenticacao.Password);
 
             if (!_UsuarioDomainService.CompararSenha(usuario, query.Senha))
@@ -39,7 +39,8 @@ namespace SegurancaBC.Application.UsuarioCases.FazerLogin
 
             return new UsuarioDTO()
             {
-                NomeDeUsuario = usuario.NomeDeUsuario.Endereco
+                NomeDeUsuario = usuario.NomeDeUsuario.Endereco,
+                AccessToken = _UsuarioDomainService.GerarToken(usuario)
             };
         }
     }

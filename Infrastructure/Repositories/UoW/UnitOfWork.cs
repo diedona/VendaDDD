@@ -1,4 +1,4 @@
-﻿using Infrastructure.Connection;
+﻿using Infrastructure.Configurations;
 using SharedKernel.Repositories;
 using System;
 using System.Collections.Generic;

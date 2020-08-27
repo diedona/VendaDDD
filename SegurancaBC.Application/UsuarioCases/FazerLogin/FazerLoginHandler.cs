@@ -24,16 +24,16 @@ namespace SegurancaBC.Application.UsuarioCases.FazerLogin
 
             try
             {
-                var usuarioDTO = await _FazerLoginUseCase.Executar(request);
+                UsuarioDTO usuarioDTO = await _FazerLoginUseCase.Executar(request);
                 _UoW.Commit();
+
+                return usuarioDTO;
             }
             catch (Exception)
             {
                 _UoW.RollBack();
                 throw;
             }
-
-            return new UsuarioDTO();
         }
     }
 }

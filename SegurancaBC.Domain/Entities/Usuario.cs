@@ -11,10 +11,14 @@ namespace SegurancaBC.Domain.Entities
         public string Password { get; private set; }
         public string Salt { get; private set; }
 
-        public Usuario(Email nomeDeUsuario, Guid? id = null) : base(id)
+        public Usuario(Email nomeDeUsuario, Guid? id = null) : this(nomeDeUsuario, false, id) 
+        { 
+        }
+
+        public Usuario(Email nomeDeUsuario, bool ativo, Guid? id = null) : base(id)
         {
             NomeDeUsuario = nomeDeUsuario;
-            Ativo = false;
+            Ativo = ativo;
 
             AddNotifications(nomeDeUsuario);
         }
@@ -23,6 +27,11 @@ namespace SegurancaBC.Domain.Entities
         {
             Salt = salt;
             Password = hash;
+        }
+
+        public void Ativar()
+        {
+            Ativo = true;
         }
     }
 }
