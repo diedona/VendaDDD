@@ -34,7 +34,13 @@ namespace SegurancaBC.Application.UsuarioCases.FazerLogin
             if (!_UsuarioDomainService.CompararSenha(usuario, query.Senha))
                 throw new Exception("Usuário não encontrado");
 
-            return new UsuarioDTO();
+            if(!usuario.Ativo)
+                throw new Exception("Usuário inativo!");
+
+            return new UsuarioDTO()
+            {
+                NomeDeUsuario = usuario.NomeDeUsuario.Endereco
+            };
         }
     }
 }
