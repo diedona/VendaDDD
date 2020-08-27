@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SegurancaBC.Application.UsuarioCases.FazerLogin;
 using SegurancaBC.Domain.DTO.Usuario;
@@ -28,6 +29,13 @@ namespace WebApi.Controllers
             {
                 return RetornarBadRequest(ex);
             }
+        }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<ActionResult> Get()
+        {
+            return Ok($"Olá {User.Identity.Name}");
         }
     }
 }
