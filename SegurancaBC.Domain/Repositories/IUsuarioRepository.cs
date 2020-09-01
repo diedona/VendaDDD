@@ -16,5 +16,6 @@ namespace SegurancaBC.Domain.Repositories
         Task InserirUsuario(Usuario usuario);
         Task AtivarUsuario(Email nomeDeUsuario);
         Task InativarUsuario(Email nomeDeUsuario);
+        Task<Guid> GravarUsuario(Usuario novoUsuario);
     }
 }

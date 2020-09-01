@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using SegurancaBC.Application.UsuarioCases.CadastrarUsuario;
 using SegurancaBC.Application.UsuarioCases.FazerLogin;
 using SegurancaBC.Domain.DomainServices;
 using SegurancaBC.Domain.InfrastructureServices;
@@ -16,6 +17,7 @@ namespace SegurancaBC.Application.DependencyInjection
         {
             services.AddScoped<UsuarioDomainService>();
             services.AddScoped<FazerLoginUseCase>();
+            services.AddScoped<CadastrarUsuarioUseCase>();
             return services;
         }
     }

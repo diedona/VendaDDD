@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using Dapper.Contrib.Extensions;
 using SegurancaBC.Domain.DTO;
 using SegurancaBC.Domain.DTO.Usuario;
 using SegurancaBC.Domain.Entities;
@@ -44,6 +45,20 @@ namespace Infrastructure.Repositories
         public async Task InserirUsuario(Usuario usuario)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<Guid> GravarUsuario(Usuario novoUsuario)
+        {
+            var usuarioInserir = new Database.Models.Usuario()
+            {
+                Id = novoUsuario.Id,
+                NomeDeUsuario = novoUsuario.NomeDeUsuario.Endereco,
+                Password = novoUsuario.Password,
+                Salt = novoUsuario.Salt
+            };
+
+            await _UoW.Connection.InsertAsync(usuarioInserir, _UoW.Transaction);
+            return novoUsuario.Id;
         }
     }
 }

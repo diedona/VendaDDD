@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SegurancaBC.Application.UsuarioCases.CadastrarUsuario;
 using SegurancaBC.Application.UsuarioCases.FazerLogin;
 using SegurancaBC.Domain.DTO.Usuario;
 using WebApi.Controllers.Base;
@@ -36,6 +37,22 @@ namespace WebApi.Controllers
         public async Task<ActionResult> Get()
         {
             return Ok($"Olá {User.Identity.Name}");
+        }
+
+        [Authorize]
+        [HttpPost]
+        [Route("cadastrar")]
+        public async Task<ActionResult<Guid>> CadastrarUsuario([FromBody] CadastrarUsuarioCommand command)
+        {
+            try
+            {
+                Guid id = await _Mediator.Send(command);
+                return Ok(id);
+            }
+            catch (Exception ex)
+            {
+                return RetornarBadRequest(ex);
+            }
         }
     }
 }
